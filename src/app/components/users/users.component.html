@@ -1,27 +1,23 @@
 <div class="d-grid gap-3">
   <div class="p-3">
-  <button (click)="showUsersList = !showUsersList" class="btn btn-primary btn-block" type="button">
-    Show user's list
-  </button>
+    <button (click)="showUsersList = !showUsersList" class="btn btn-primary btn-block" type="button">
+      Show user's list
+    </button>
   </div>
 
 
 <div class="p-3" *ngIf="showUsersList">
   <ul class="list-unstyled" *ngIf="users.length > 0 else noUsers">
-    <li class="card card-board mb-2"
-        *ngFor="let user of users">
-      <h3>
-        {{user.id}}. {{user.name}}
-        <small>
-          <button (click)="toggleHide(user)" class="btn btn-dark">
-            <i [ngClass]="user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></button
-        ></small>
-      </h3>
-      <ul class="list-group" *ngIf="!user.hide">
-        <li class="list-group-item">Username: {{user.username}}</li>
-        <li class="list-group-item">Email: {{user.email}}</li>
-        <li class="list-group-item">Joined: {{user.registered | date}}</li>
-      </ul>
+    <li class="card card-board mb-2" *ngFor="let user of users">
+      <app-user
+        [id] = "user.id"
+        [name] = "user.name"
+        [username] = "user.username"
+        [email] = "user.email"
+        [hide] = "user.hide"
+        (toggle) = "toggleHide(user)"
+      >
+      </app-user>
     </li>
   </ul>
 </div>

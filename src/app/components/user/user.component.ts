@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { User } from 'src/app/models/User';
 
 @Component({
@@ -8,9 +9,20 @@ import { User } from 'src/app/models/User';
 })
 export class UserComponent implements OnInit {
 
+  @Input() id!: number;
+  @Input() name!: string;
+  @Input() username!: string;
+  @Input() hide!: boolean;
+  @Input() email!: string;
+  @Input() registered: any = new Date();
+  @Output() toggle = new EventEmitter();
 
+  toggleUser(): void{
+    this.toggle.emit();
+  }
 
   ngOnInit(): void {
+
   }
 
 }

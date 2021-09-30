@@ -1,1 +1,12 @@
-
+      <h3>
+        {{id}}. {{name}}
+        <small>
+          <button (click)="toggleUser()"  class="btn btn-dark">
+            <i [ngClass]="!hide ?'fa fa-plus' : 'fa fa-minus' "></i></button
+        ></small>
+      </h3>
+      <ul class="list-group" *ngIf="hide">
+        <li class="list-group-item">Username: {{username}}</li>
+        <li class="list-group-item">Email: {{email}}</li>
+        <li class="list-group-item" >Joined: {{registered | date}} </li>
+      </ul>

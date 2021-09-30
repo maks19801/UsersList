@@ -3,6 +3,6 @@ export interface User {
   name: string;
   username: string;
   email: string;
-  hide?: boolean;
+  hide: boolean;
   registered?: any;
 }
