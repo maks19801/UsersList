@@ -4,7 +4,10 @@
       Show user's list
     </button>
   </div>
-
+  <div class="p-3">
+      <button class="btn btn-success btn-block" type="button"><i class="fas fa-user-plus"></i></button>
+  </div>
+</div>
 
 <div class="p-3" *ngIf="showUsersList">
   <ul class="list-unstyled" *ngIf="users.length > 0 else noUsers">
@@ -21,7 +24,7 @@
     </li>
   </ul>
 </div>
-</div>
+
 
 
 <ng-template #noUsers>
