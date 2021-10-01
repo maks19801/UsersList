@@ -4,9 +4,7 @@
       Show user's list
     </button>
   </div>
-  <div class="p-3">
-      <button class="btn btn-success btn-block" type="button"><i class="fas fa-user-plus"></i></button>
-  </div>
+  <app-add-user (add)="addUser($event)"></app-add-user>
 </div>
 
 <div class="p-3" *ngIf="showUsersList">

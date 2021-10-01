@@ -17,4 +17,10 @@ export class UsersService {
       tap(_=>console.log(`loaded ${_.length} users`))
     )
   }
+
+  addUser(newUser: User): Observable<{}> {
+    return this.client.post(this.url, newUser);
+  }
+
+
 }
