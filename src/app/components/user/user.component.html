@@ -1,4 +1,5 @@
-      <h3>
+<div *ngIf="!editMode else editInput">
+<h3>
         {{id}}. {{name}}
         <small>
           <button (click)="toggleUser()"  class="btn btn-dark">
@@ -6,17 +7,28 @@
         ></small>
       </h3>
       <ul class="list-group" *ngIf="hide">
-        <li class="list-group-item">Username: {{username}}</li>
-        <li class="list-group-item">Email: {{email}}</li>
+        <li class="list-group-item" >Username: {{username}}</li>
+        <li class="list-group-item" >Email: {{email}}</li>
         <li class="list-group-item" >Joined: {{registered | date}} </li>
         <li class="list-group-item" >
           <div class="d-flex flex-row">
             <div class="p-2">
-              <button class="btn btn-danger btn-block"><i class="fas fa-user-minus"></i></button>
+              <button (click)="removeUser()" class="btn btn-danger btn-block"><i class="fas fa-user-minus"></i></button>
             </div>
             <div class="p-2">
-              <button class="btn btn-warning btn-block"><i class="fas fa-user-edit"></i></button>
+              <button *ngIf="!editMode" (click)="startEditMode()" class="btn btn-warning btn-block"><i class="fas fa-user-edit"></i></button>
             </div>
           </div>
         </li>
       </ul>
+</div>
+
+
+      <ng-template #editInput>
+        <input [(ngModel)]="name">
+        <input [(ngModel)]="username">
+        <input [(ngModel)]="email">
+
+        <button (click)="editUser()"  class="btn btn-succes"><i class="far fa-check-circle"></i></button>
+      </ng-template>
+

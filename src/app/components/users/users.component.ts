@@ -11,7 +11,6 @@ import { tap } from 'rxjs/operators'
 export class UsersComponent implements OnInit {
   users!: User[];
   hide: boolean = true;
-
   showUsersList: boolean = false;
 
   constructor(private readonly service: UsersService) {}
@@ -39,5 +38,23 @@ export class UsersComponent implements OnInit {
     this.service.addUser(newUser).subscribe(() => {
       this.users = [newUser, ...this.users];
     })
+  }
+
+  removeUser(id:number) {
+    this.service.removeUser(id).subscribe(() => {
+      this.users = this.users.filter(t => t.id !== id);
+    },
+    () => {
+      console.log('remove failed');
+    });
+  }
+
+  editUser(id:number, newName: string): void {
+    const changedUser = this.findUser(id);
+    changedUser!.name = newName;
+    this.service.editUser(id, changedUser!).subscribe();
+  }
+  private findUser(id: number): User|undefined {
+     return this.users.find(t => t.id === id);
   }
 }

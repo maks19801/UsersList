@@ -17,6 +17,8 @@
         [email] = "user.email"
         [hide] = "user.hide"
         (toggle) = "toggleHide(user)"
+        (remove) = "removeUser(user.id)"
+        (edit) = "editUser(user.id, $event)"
       >
       </app-user>
     </li>
